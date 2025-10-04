@@ -105,7 +105,7 @@ class control_panel:
         
         
         
-    def trun_on_in_group(self,group_name):
+    def turn_on_in_group(self,group_name):
         
         if group_name in self.groups:
             
