@@ -1,3 +1,5 @@
+       
+
 class Device:
     
     def __init__(self,location,group,device_type,device_name):
@@ -115,7 +117,7 @@ class control_panel:
                 device.turn_on()
             
         else:
-            print('{group_name} is not exist.') 
+            print(f'{group_name} is not exist.') 
             
             
             
@@ -126,7 +128,7 @@ class control_panel:
                 device.turn_off()
             
         else:
-            print('{group_name} is not exist.') 
+            print(f'{group_name} is not exist.') 
     
     
     def turn_on_all(self):
@@ -148,7 +150,7 @@ class control_panel:
                 device.get_status()
                 
         else:
-            print('{group_name} is not exist.')  
+            print(f'{group_name} is not exist.')  
         
 
         
