@@ -1,4 +1,3 @@
-
 class Device:
     
     def __init__(self,location,group,device_type,device_name):
@@ -60,13 +59,11 @@ class control_panel:
     
     def add_device_to_group(self,group_name,device):
         if group_name in self.groups:
-            
-        
             self.groups[group_name].append(device)
             # groups['living_room'] -->[]
-            print(f'your devic is added to {group_name}')
+            print(f'your device is added to {group_name}')
         else:
-            print('you group is not exist....')
+            print('your group is not exist....')
         
         
         
@@ -78,10 +75,10 @@ class control_panel:
             new_device=Device(location,group_name,device_type,device_name)
             
             self.groups[group_name].append(new_device)
-            print('///////bamofghtia')
+            print(f'{new_device} added successfully')
             
         else:
-            print('agha in esm vojod ndre') #...
+            print(f'{group_name} is not exist.')
         
         
         
@@ -97,7 +94,7 @@ class control_panel:
             
         else:
             
-            print('....')
+            print(f'{group_name} is not exist.')
             
             
             
@@ -118,76 +115,79 @@ class control_panel:
                 device.turn_on()
             
         else:
-            print('....') 
+            print('{group_name} is not exist.') 
             
             
             
     def turn_off_in_group(self,group_name):
-        '''
-        biad dakhele oon group_name doone doone ro
-        khamoosh kone 
-        
-        
-        '''
-        pass
+        if group_name in self.groups:
+            devices=self.get_devices(group_name)
+            for device in devices:
+                device.turn_off()
+            
+        else:
+            print('{group_name} is not exist.') 
     
     
     def turn_on_all(self):
-        '''
-        tamame device haro roshan kone
-        too livign toome parking hgarjaa
-        hamaroo roshan kone
-        '''
-        pass
-    
+      for devices in self.groups.values():
+        for device in devices:
+            device.turn_on()
+           
     
     def turn_off_all(self):
-        '''
-        hamaro khamoosh kone
-        '''
-        
-        
-        pass
-    
+      for devices in self.groups.values():
+        for device in devices:
+            device.turn_off()
+ 
     
     def get_status_in_group(self,group_name):
-        '''
-        be ezaye device haye tooye masalan felan group
-        living_room --> bebine roshanan ya khamoshan
-        porint kone
+        if group_name in self.groups:
+            devices=self.get_devices(group_name)
+            for device in devices:
+                device.get_status()
+                
+        else:
+            print('{group_name} is not exist.')  
         
-        a.get_status_in_group('living_room')
-        
-        device {name} is on
-        ... ..  .. ois off
-        .. .. .. is on
-        '''
-        
-    def get_status_in_device_type(self,dvice_type):
-        
-        '''
-        varaye kole devicd haee k hasan
-        bere device_typeshono check kone
-        
-        fght lamparo bere check kone
-        
-        lamps -->lampa
-        doors --L> fght doora
-        (too ch groupi , device_type)
-        
-        statuseshono bede
 
         
-        '''
-        pass
+    def get_status_in_device_type(self, device_type):
+        
+        for group_name, devices in self.groups.items():
+            for device in devices:
+                if device.device_type == device_type:
+                    status = device.get_status()
+                    print(f'status of {device_type} is {status}')
+                    
+        else:
+            print(f'{device_type} is not exist.')
+
     
+    def create_sensor(self,group_name,sensor_type,sensor_name):
+            
+            if group_name in self.groups:
+                location='home'
+                new_sensor=Sensor(location,group_name,sensor_type,sensor_name)
+                
+                self.groups[group_name].append(new_sensor)
+                print(f'{new_sensor} added successfully')
+                
+            else:
+                print(f'{group_name} is not exist.')    
+        
     
-    #tabe ee bename create_device???
-    
-    def create_sensor(self):
-        pass
-    
-    def create_multiple_sensor(self):
-        pass
+    def create_multiple_sensor(self,group_name,sensor_type,sensor_number):
+        if group_name in self.groups:  
+            for i in range(1,sensor_number+1):
+                sen_name=f'{sensor_type}_{i}'
+                self.create_sensor(group_name,sensor_type,sen_name)
+
+            print(f'{sensor_number} sensors created!!')
+                
+        else:
+                
+            print(f'{group_name} is not exist.')    
+        
     
     
