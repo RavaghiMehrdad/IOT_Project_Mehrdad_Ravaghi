@@ -2,7 +2,11 @@
 salam ostad,shoma code ra check kardid ?
 
 
-
+APM:
+salam , bande alan check krdm , tabe ha ok bood fght print b tabe ha ezaf konid (masan felan device ha sakhte shdoan , moafagh bod felan bood
+hamchnin besoorate khas in nokat:
+nokati b tabe ye [[get_status_in_group]] va  ezafe kardam va 
+baghie ye tavabe hame dorost bod ahsant awlie
 '''
 
 class Device:
@@ -152,6 +156,7 @@ class control_panel:
         if group_name in self.groups:
             devices=self.get_devices(group_name)
             for device in devices:
+                #khob in khoroji mide khoroji ro begirid va printesh konid
                 device.get_status()
                 
         else:
